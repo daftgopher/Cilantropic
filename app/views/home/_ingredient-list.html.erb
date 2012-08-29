@@ -1,0 +1,14 @@
+<h1>Select Ingredients</h1>
+
+
+<ul>
+<%= form_tag('/search') do %>
+    <%- @ingredients.each do |ingredient| %>
+    <li> 
+    	<%= check_box_tag("ingredient_ids", ingredient.id) %> 
+    	<%= ingredient.name %>
+    </li>
+    <%- end %>
+    <%= submit_tag %>
+<% end %>
+</ul>

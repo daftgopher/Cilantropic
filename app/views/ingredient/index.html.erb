@@ -1,0 +1,23 @@
+<h1>Select Ingredients</h1>
+
+<table>
+<%  incr = 1 
+    @ingredients.each do |ingredient|
+
+      if inc % 3 == 0 %>
+        <tr>
+      <% end %>
+    
+      <td><%= ingredient.name %></td>
+    
+      <% if inc % 3 == 2 %>
+        </tr>
+      <% end %>
+    <% incr = incr + 1 %>
+
+    <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>
