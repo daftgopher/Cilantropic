@@ -4,11 +4,15 @@
   <title>Cilantropic</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript" src="//use.typekit.net/maz8ffe.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div class="wrap">
+		<div class="content">
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>

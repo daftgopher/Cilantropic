@@ -2,13 +2,13 @@
 
 
 <ul>
-<%= form_tag('/search') do %>
-    <%- @ingredients.each do |ingredient| %>
+<%= form_tag('/search', :method => "get") do %>
+    <%-	@ingredients.each do |ingredient| %>
     <li> 
-    	<%= check_box_tag("ingredient_ids", ingredient.id) %> 
-    	<%= ingredient.name %>
+    	<%= check_box_tag("ingredient_ids[]", ingredient.id) %> 
+    	<%= label_tag("ingredient_ids", ingredient.name) %>
     </li>
     <%- end %>
-    <%= submit_tag %>
+    <%= submit_tag "Let's Cook This Bitch like Walter and Jesse!" %>
 <% end %>
 </ul>
