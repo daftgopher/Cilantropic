@@ -8,8 +8,6 @@
 $button-color: #94b931, #9b9a3d;
 $light-button-color: lighten(#94b931, 10%), lighten(#9b9a3d, 10%);
 $brand-green: #51B931;
-$heading-green: #93c848;
-
 
 body {
 	background: url(subtle_freckles_yellow.png);
@@ -38,7 +36,7 @@ li {
 }
 
 h1 {
-	color: $heading-green;
+	color: $brand-green;
 }
 
 .main-header-wrap {

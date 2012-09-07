@@ -11,6 +11,8 @@
 	<%- @selected_recipes = RecipeIngredient.where(:ingredient_id => @selected_ingredient_ids) %>
 
 	<%- @selected_recipes.each do |recipe_item| %>
-		<%= recipe_item.recipe.name %><br>
+		
+		<%= recipe_item.recipe.name %> <br>
+
 	<%- end %>
 </ul>
