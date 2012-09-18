@@ -1,7 +1,7 @@
 Cilantropic::Application.routes.draw do
   root :to => 'home#index'
 
-  resources :ingredients, :recipes
+  resources :ingredients, :recipe, :recipe_ingredients
   match 'new_user' => "Users#new"
 
   match '/search' => 'Search#search'

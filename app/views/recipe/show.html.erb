@@ -1,0 +1,7 @@
+<h1><%= @recipe.name %></h1>
+<p>You will need:</p>
+<ul class="ingredient-selection-list">
+	<% @recipe.recipe_ingredients.each do |list_ingredient| %>
+	<li><%= list_ingredient.name %> &ndash; <%= list_ingredient.amount %></li>
+	<% end %>
+</ul>

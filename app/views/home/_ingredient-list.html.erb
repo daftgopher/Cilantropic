@@ -1,12 +1,15 @@
 <h1>Select Ingredients</h1>
 
 
-<ul>
-<%= form_tag('/search', :method => "get") do %>
+<ul class="ingredient-list">
+<%= form_tag('/search', :method => "post") do %>
     <%-	@ingredients.each do |ingredient| %>
     <li> 
-    	<%= check_box_tag("ingredient_ids[]", ingredient.id) %> 
-    	<%= label_tag("ingredient_ids", ingredient.name) %>
+    	<%= image_tag(ingredient.image) %>
+    	<article class="ingredient-name">
+	    	<%= check_box_tag("ingredient_ids[]", ingredient.id) %> 
+	    	<%= label_tag("ingredient_ids", ingredient.name) %>
+    	</article>
     </li>
     <%- end %>
     <%= submit_tag "Let's Cook This Bitch like Walter and Jesse!" %>

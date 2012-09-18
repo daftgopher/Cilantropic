@@ -1,6 +1,6 @@
 <h1>Here's some stuff you can make</h1>
 
-<p>You selected the following shit:</p>
+<p>You selected the following ingredients:</p>
 <ul>
 	<%- @selected_ingredient_ids.each do |ingredient_id| %>
 		<li><%= Ingredient.find(ingredient_id).name %></li>
@@ -10,9 +10,11 @@
 <ul>
 	<%- @selected_recipes = RecipeIngredient.where(:ingredient_id => @selected_ingredient_ids) %>
 
+	<% recipe_list = [] %>
 	<%- @selected_recipes.each do |recipe_item| %>
-		
-		<%= recipe_item.recipe.name %> <br>
-
+		<% unless recipe_list.include?(recipe_item.recipe) %>
+		<li><%= link_to recipe_item.recipe.name, recipe_path(recipe_item.recipe) %> </li>
+		<% recipe_list << recipe_item.recipe %>
+		<% end %>
 	<%- end %>
 </ul>
