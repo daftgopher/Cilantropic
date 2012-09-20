@@ -8,12 +8,33 @@
 $button-color: #94b931, #9b9a3d;
 $light-button-color: lighten(#94b931, 10%), lighten(#9b9a3d, 10%);
 $brand-green: #51B931;
+$transparent-brand-green: rgba(81, 185, 49, 0.5);
+$transparent-brand-green-lighter: rgba(81, 185, 49, 0.75);
+$gray: #ccc;
+$black: #333;
+$yellow: #fff000;
+$black-transparent: rgba(0,0,0,0.6);
+
+
+// Transitions
+
+@mixin transition($speed: 0.3s) {
+	-webkit-transition: all $speed ease;
+	-moz-transition: all $speed ease;
+	-o-transition: all $speed ease;
+	-ms-transition: all $speed ease;
+} 
+
+//Shadow
+
+$mothereff: 0 1px 0 #fff000, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
 
 body {
 	background: url(subtle_freckles_yellow.png);
 	width: 100%;
 	font-family: "proxima-nova-alt";
 	color: #555;
+	font-size: 16px;
 }
 
 .wrap {
@@ -22,8 +43,8 @@ body {
 }
 
 .content {
-	background: url(subtle_freckles.jpg) #fff;
-	border: 15px solid $brand-green;
+	background: url(subtle_freckles.png) #fff;
+	border: 15px solid $transparent-brand-green;
 	box-shadow: 0px 3px 4px #333;
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
@@ -37,32 +58,54 @@ li {
 
 h1 {
 	color: $brand-green;
+	text-align: center;
+	font-size: 36px;
 }
 
 .main-header-wrap {
 	text-align: center;
+	border-bottom: 1px dashed #ccc;
 	h1 {
-		font: normal 80px "lobster";
-		text-shadow: 2px 2px 1px rgba(0,0,0,0.4);
+		font: normal 90px "lobster";
+		text-shadow: $mothereff;
 		color: $brand-green;
 		margin: 0 20px;
-		border-bottom: 1px dashed #ccc;
 		padding-bottom: 10px;
+		border-bottom: none;
 	}
+	
+	h2 {
+		font-size: 1.25em; /* 20px / 16px */
+		margin: 0 0 15px; 
+	}
+}
+
+.ingredients-area {
+	margin: 50px 20px 0;
+
+	h1 {
+		font: 30px "lobster";
+		color: $black;
+		text-shadow: 1px 1px rgba(0,0,0,0.3);
+	}
+}
+
+.ingredient-list {
+	padding: 0;
+	text-align: center; 
 }
 
 .ingredient-list li {
 	display: inline-block;
-	border: 1px solid $brand-green;
-	background: $brand-green;
+	border: 1px solid $yellow;
+	background: $transparent-brand-green-lighter;
 	color: white;
 	text-shadow: 1px 1px #333;
-	margin-right: 50px;
+	margin-right: 40px;
 	margin-bottom: 50px;
-	-webkit-transition: all .25s ease-in-out;
-	-moz-transition: all .25s ease-in-out;
-	-o-transition: all .25s ease-in-out;
-	transition: all .25s ease-in-out;
+	position: relative;
+	cursor: pointer;
+	box-shadow: 0px 3px 4px rgba(0,0,0,0.4);
 	
 	img {
 		max-width: 200px;
@@ -72,18 +115,74 @@ h1 {
 	}
 
 	.ingredient-name {
-		padding: 10px 0 20px;
+		padding: 10px 0 15px;
 		text-align: center;
 	}
 
 	input[type="checkbox"] {
-		display: none;
+		display: none;	
 	}
 
-	&:hover {
-		box-shadow: inset 0px 0px 175px #fff;
+	.checkmark {
+		text-align: center;
+		display: block;
+		font-size: 0px;
+		position: absolute;
+		top: 11%;
+		left: 27%;
+		color: $brand-green;
+		-webkit-transition: all 0.3s ease;
+		-moz-transition: all 0.3s ease;
+		-o-transition: all 0.3s ease;
+		-ms-transition: all 0.3s ease;
+		z-index: 5;
+	}
+
+	.checkmark.big {
+		font-size: 5em;
+		width: 95px;
+		height: 95px;
+		background: $yellow;
+		-moz-border-radius: 50px;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+	}
+
+	.checkmark-shadow {
+		text-align: center;
+		display: block;
+		font-size: 0px;
+		position: absolute;
+		top: 11%;
+		left: 27%;
+		z-index: 4;
+		@include transition;
+	}
+
+	.checkmark-shadow.big {
+		@extend .checkmark.big;
+		background: $black-transparent;
+		top: 12%;
+		left: 28%;
+		position: absolute;
+	}
+
+	.callin {
+		position: absolute;
+		-webkit-transition: all .25s ease-in-out;
+		-moz-transition: all .25s ease-in-out;
+		-o-transition: all .25s ease-in-out;
+		transition: all .25s ease-in-out;
+		width: 100%;
+		height: 100%;
+		z-index: 3;
+
+		&:hover {
+			box-shadow: inset 0px 0px 400px #fff;
+		}
 
 	}
+
 }
 
 input[type="submit"], input[type="button"] {

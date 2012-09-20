@@ -1,13 +1,15 @@
-<h1>Select Ingredients</h1>
-
+<h1>What's in your kitchen?</h1>
 
 <ul class="ingredient-list">
 <%= form_tag('/search', :method => "post") do %>
     <%-	@ingredients.each do |ingredient| %>
     <li> 
+    	<div class="callin"></div>
     	<%= image_tag(ingredient.image) %>
     	<article class="ingredient-name">
-	    	<%= check_box_tag("ingredient_ids[]", ingredient.id) %> 
+	    	<%= check_box_tag("ingredient_ids[]", ingredient.id, false, :class => "ingredient-checkbox") %> 
+            <span class="checkmark">&#10003;</span>
+            <span class="checkmark-shadow"></span>
 	    	<%= label_tag("ingredient_ids", ingredient.name) %>
     	</article>
     </li>
