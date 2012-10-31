@@ -18,14 +18,7 @@ group :assets do
   gem 'compass'
 end
 
-group :development do
-	gem 'sqlite3'
-end
-
-group :production do
-	gem 'pg'
-	gem 'thin'
-end
+gem 'pg'
 
 gem 'devise'
 gem 'jquery-rails'
