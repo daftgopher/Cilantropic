@@ -1,9 +1,12 @@
 Cilantropic::Application.routes.draw do
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
   root :to => 'home#index'
 
   resources :ingredients, :recipe, :recipe_ingredients
-  match 'new_user' => "Users#new"
-
+  
   match '/search' => 'Search#search'
 
   # The priority is based upon order of creation:

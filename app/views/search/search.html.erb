@@ -1,23 +1,25 @@
-<section class="recipe-results">
-	<h1>Here's some stuff you can make!</h1>
+<div class="content">
+	<section class="recipe-results">
+		<h1>Here's some stuff you can make!</h1>
 
-	<p>You selected the following ingredients:</p>
-	<ul class="selected-ingredients">
-		<%- @selected_ingredient_ids.each do |ingredient_id| %>
-			<li><%= image_tag(Ingredient.find(ingredient_id).image) %>
-				<%= Ingredient.find(ingredient_id).name %></li>
-		<%- end %>
-	</ul>
-	<p>Might we suggest you try the following dope recipes based on your selection?</p>
-	<ul>
-		<%- @selected_recipes = RecipeIngredient.where(:ingredient_id => @selected_ingredient_ids) %>
+		<p>You selected the following ingredients:</p>
+		<ul class="selected-ingredients">
+			<%- @selected_ingredient_ids.each do |ingredient_id| %>
+				<li><%= image_tag(Ingredient.find(ingredient_id).image) %>
+					<%= Ingredient.find(ingredient_id).name %></li>
+			<%- end %>
+		</ul>
+		<p>Might we suggest you try the following dope recipes based on your selection?</p>
+		<ul class="suggested-recipes">
+			<%- @selected_recipes = RecipeIngredient.where(:ingredient_id => @selected_ingredient_ids) %>
 
-		<% recipe_list = [] %>
-		<%- @selected_recipes.each do |recipe_item| %>
-			<% unless recipe_list.include?(recipe_item.recipe) %>
-			<li><%= link_to recipe_item.recipe.name, recipe_path(recipe_item.recipe) %> </li>
-			<% recipe_list << recipe_item.recipe %>
-			<% end %>
-		<%- end %>
-	</ul>
-</section>
+			<% recipe_list = [] %>
+			<%- @selected_recipes.each do |recipe_item| %>
+				<% unless recipe_list.include?(recipe_item.recipe) %>
+				<li><%= link_to recipe_item.recipe.name, recipe_path(recipe_item.recipe) %> </li>
+				<% recipe_list << recipe_item.recipe %>
+				<% end %>
+			<%- end %>
+		</ul>
+	</section>
+</div>

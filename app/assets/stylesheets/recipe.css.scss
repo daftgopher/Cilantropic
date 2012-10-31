@@ -2,8 +2,68 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'configuration';
+
 h1 {
 	border-bottom: 1px dotted #ccc;
-	padding-bottom: 5px;
-	margin-bottom: 10px;
+	padding-bottom: 15px;
+	margin: 10px 0 30px;
+	font: normal 60px lobster;
+	color: darken($brand-green, 6);
+	text-shadow: 0 1px white;
 }
+
+.recipe-content {
+
+	width: 60%;
+	margin: 0 auto;
+	overflow: hidden;
+
+	img {
+		float: right;
+		border: 1px solid $gray;
+	}
+
+	h2 {
+		font-size: 1.75em;
+		font-family: lobster;
+		color: darken($brand-green, 12);
+		padding-bottom: 5px;
+		@include sleekBorder;
+	}
+}
+
+.recipe-details {
+	width: 50%;
+	margin-bottom: 50px;
+
+	h2:first-child {
+		margin-bottom: 10px;
+	}
+}
+
+.ingredient-selection-list {
+	margin-bottom: 50px;
+
+	li {
+		margin: 0 0 10px 0;
+		font-weight: bold;
+
+		&:before {
+			content: '';
+			background: url('leaf-icon.png');
+			width: 25px;
+			height: 29px;
+			display: inline-block;
+			margin-right: 15px;
+			position: relative;
+			top: 12px;
+		}
+
+		em {
+			font-weight: normal;
+		}
+	}
+
+}
+

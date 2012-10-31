@@ -3,31 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// Color variables
-
-$button-color: #94b931, #9b9a3d;
-$light-button-color: lighten(#94b931, 10%), lighten(#9b9a3d, 10%);
-$brand-green: #51B931;
-$transparent-brand-green: rgba(81, 185, 49, 0.5);
-$transparent-brand-green-lighter: rgba(81, 185, 49, 0.75);
-$gray: #ccc;
-$black: #333;
-$yellow: #fff000;
-$black-transparent: rgba(0,0,0,0.6);
-
-
-// Transitions
-
-@mixin transition($speed: 0.3s) {
-	-webkit-transition: all $speed ease;
-	-moz-transition: all $speed ease;
-	-o-transition: all $speed ease;
-	-ms-transition: all $speed ease;
-} 
-
-//Shadow
-
-$mothereff: 0 1px 0 #fff000, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+@import 'configuration';
 
 body {
 	background: url(subtle_freckles_yellow.png);
@@ -37,9 +13,14 @@ body {
 	font-size: 16px;
 }
 
+ul, ol {
+	margin: 0;
+	padding: 0;
+}
+
 .wrap {
-	width: 65%;
-	margin: 3% auto;
+	width: 95%;
+	margin: 85px auto;
 }
 
 .content {
@@ -56,6 +37,10 @@ li {
 	list-style: none;
 }
 
+a {
+	color:$brand-green;
+}
+
 h1 {
 	color: $brand-green;
 	text-align: center;
@@ -65,19 +50,103 @@ h1 {
 .main-header-wrap {
 	text-align: center;
 	border-bottom: 1px dashed #ccc;
+	position: relative;
+	height: 230px;
+
 	h1 {
-		font: normal 90px "lobster";
+		font: normal 125px "lobster";
 		text-shadow: $mothereff;
 		color: $brand-green;
 		margin: 0 20px;
-		padding-bottom: 10px;
+		padding-bottom: 20px;
 		border-bottom: none;
+		@include transition(font);
 	}
 	
 	h2 {
-		font-size: 1.25em; /* 20px / 16px */
+		font-size: 1.75em; /* 28px / 16px */
 		margin: 0 0 15px; 
 	}
+
+	.heading-overlay {
+		display: none;
+		background: url(white-shim.png);
+		width: 93%;
+		min-height: 100px; 
+		position: fixed;
+		top: 0px;
+		left: 4%;
+		z-index: 24;
+		border-bottom: 1px solid #ccc;
+	}
+}
+
+.fix-utility-nav {
+	position: fixed;
+	right: 7%;
+	top: 20px;
+	z-index: 25;
+	display: none;
+}
+
+.utility-nav {
+
+	ul {
+		margin: 17px 20px 0;
+	}
+	
+	li {
+		display: inline-block;
+		text-align: center;
+		padding: 0 25px;
+	}
+
+	li:first-child {
+		border-right: 1px solid $brown;
+		box-shadow: 1px 0 1px $whiteLite;
+	}
+	
+	a {
+		color: $black;
+		text-decoration: none;
+		z-index: 25;
+	}
+	
+}
+
+.utility-nav-wrap {
+	position: absolute;
+	top: -75px;
+	right: 0px;
+	width: auto;
+	height: 80px;
+	background: transparentize($yellow, 0.25);
+	z-index: -1;
+	text-shadow: $textWhiteLite;
+	border: 5px solid transparentize(adjust-hue($yellow, -35), .50);
+	@include borderRadius;
+
+
+	li {
+		display: inline-block;
+		text-align: center;
+		min-height: 20px;
+		position: relative;
+		top: -4px;
+		padding-top: 2px;
+		padding-bottom: 5px;
+	}
+
+	a {
+		text-decoration: underline;
+		color: $brown;
+
+		&:hover {
+			color: lighten($brown, 10);
+		}
+	}
+
+	
 }
 
 .ingredients-area {
@@ -92,7 +161,8 @@ h1 {
 
 .ingredient-list {
 	padding: 0;
-	text-align: center; 
+	text-align: center;
+	margin: 0 0 0 10px 
 }
 
 .ingredient-list li {
@@ -130,11 +200,9 @@ h1 {
 		position: absolute;
 		top: 11%;
 		left: 27%;
+		opacity: 0;
 		color: $brand-green;
-		-webkit-transition: all 0.3s ease;
-		-moz-transition: all 0.3s ease;
-		-o-transition: all 0.3s ease;
-		-ms-transition: all 0.3s ease;
+		@include transition; 
 		z-index: 5;
 	}
 
@@ -142,6 +210,7 @@ h1 {
 		font-size: 5em;
 		width: 95px;
 		height: 95px;
+		opacity: 1;
 		background: $yellow;
 		-moz-border-radius: 50px;
 		-webkit-border-radius: 50px;
@@ -153,6 +222,7 @@ h1 {
 		display: block;
 		font-size: 0px;
 		position: absolute;
+		opacity: 0;
 		top: 11%;
 		left: 27%;
 		z-index: 4;
@@ -162,6 +232,7 @@ h1 {
 	.checkmark-shadow.big {
 		@extend .checkmark.big;
 		background: $black-transparent;
+		opacity: 1;
 		top: 12%;
 		left: 28%;
 		position: absolute;
@@ -203,6 +274,7 @@ input[type="submit"], input[type="button"] {
 	text-decoration: none;
 	color: #fff;
 	border: 1px solid #94913c;
+	cursor: pointer;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
@@ -213,10 +285,27 @@ input[type="submit"]:hover, input[type="button"]:hover {
 	background-image: -o-linear-gradient(top, $light-button-color);
 	background-image: -ms-linear-gradient(top, $light-button-color);
 	background-image: linear-gradient(top, $light-button-color);
+	cursor: pointer;
 }
 
 
+// Some helper classes:
 
+h1.fixed {
+	position: fixed;
+	z-index: 25;
+	width: 100%;
+	top: 0;
+	left: -12px;
+	font-size: 64px;
+	@include transition(font);
+}
+
+.fix-position {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
 
 
 

@@ -1,3 +1,142 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Color variables
+
+$button-color: #94b931, #9b9a3d;
+$light-button-color: lighten(#94b931, 10%), lighten(#9b9a3d, 10%);
+$brand-green: #51B931;
+$transparent-brand-green: rgba(81, 185, 49, 0.5);
+$transparent-brand-green-lighter: rgba(81, 185, 49, 0.75);
+$gray: #ccc;
+$black: #333;
+$yellow: #fff000;
+$brown: #814d03;
+$black-transparent: rgba(0,0,0,0.6);
+$whiteLite: rgba(255,255,255,0.5);
+$errorRed: #ffa68a;
+
+
+// Font 
+
+$proxima: "proxima-nova-alt";
+
+// Transitions
+
+@mixin transition($type: all, $speed: 0.3s) {
+	-webkit-transition: $type $speed ease;
+	-moz-transition: $type $speed ease;
+	-o-transition: $type $speed ease;
+	-ms-transition: $type $speed ease;
+} 
+
+//Border Radius
+
+@mixin borderRadius($radius: 15px) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+}
+
+//Shadow
+
+$textBlack: 0 1px 0 #333;
+$textWhite: 0 1px 0 #fff;
+$textWhiteLite: 0 1px 0 rgba(255,255,255,0.3);
+$mothereff: 0 1px 0 #fff000, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+$othereff: 0 1px 0 #fff000, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+
+
+.content-login {
+	width: 400px;
+	margin: 0 auto;
+	padding: 0px 50px 50px;	
+	background: white;
+}
+
+.content-signup {
+	width: 500px;
+	margin: 0 auto;
+	padding: 0px 50px 50px;
+	background: white;
+}
+
+.content-login, .content-signup {
+	h2 {
+		font: 48px lobster;
+		color: $brand-green;
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+		border-bottom: 1px dotted $gray;
+	}
+}
+
+form {
+
+	input[type="text"], input[type="email"], input[type="password"] {
+		width: 95%;
+		background: #f3ec82;
+		border: 1px solid #d8d166;
+		height: 50px;
+		margin-bottom: 30px;
+		font-size: 1.5em; /* 24/ 16 */
+		font-family: "proxima-nova-alt";
+		padding: 0 10px;
+		opacity: 0.8;
+		text-shadow:$textWhiteLite;
+	}
+
+	input[type="submit"] {
+		width: 100%;
+	}
+
+	.form-checkbox {
+		margin-top: -20px;
+		margin-bottom: 30px;
+	}
+
+	#error_explanation {
+		background: $errorRed;
+		border: 1px solid darken($errorRed, 25);
+		padding: 15px 20px;
+		color: darken($errorRed, 60);
+		margin-bottom: 30px;
+		text-shadow:$textWhiteLite;
+
+		h2 {
+			font: normal 1.125em "proxima-nova-alt"; /* 18px / 16px */
+			color: $black;
+			border-bottom: 1px dashed $black;
+			padding-bottom: 5px;
+		}
+
+		h2:first-letter {
+			font-size: 1.75em; /* 28px / 16px */
+			font-style: italic;
+			margin-left: 10px;
+		}
+
+		li {
+			list-style: disc;
+			margin-left: 30px;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,17 @@
-<h1><%= @recipe.name %></h1>
-<p>You will need:</p>
-<ul class="ingredient-selection-list">
-	<% @recipe.recipe_ingredients.each do |list_ingredient| %>
-	<li><%= list_ingredient.name %> &ndash; <%= list_ingredient.amount %></li>
-	<% end %>
-</ul>
+<div class="content recipe-content">
+	<h1><%= @recipe.name %></h1>
+	<%= image_tag(@recipe.image) %>
+	<div class="recipe-details">
+		<h2>You will need:</h2>
+	<ul class="ingredient-selection-list">
+		<% @recipe.recipe_ingredients.each do |list_ingredient| %>
+		<li><%= list_ingredient.name %> &ndash; <em><%= list_ingredient.amount %></em></li>
+		<% end %>
+	</ul>
+
+	<h2 class="preparation">Preparation:</h2>	
+		<%= @recipe.content %>
+	</div>
+	
+
+</div>

@@ -1,11 +1,20 @@
-<div class="main-header-wrap">
-	<header>
-		<hgroup>
-			<h1>Cilantropic</h1>
-			<h2>A recipe site that may or may not have anything to do with cilantro.</h2>
-		</hgroup>
-	</header>
-</div> <!-- main-header-wrap -->
-<section class="ingredients-area">
-	<%= render 'ingredient-list' %>
-</section>
+<div class="content">
+	<div class="main-header-wrap">
+		<header>
+			<hgroup>
+				<h1>Cilantropic</h1>
+				<h2>A recipe site that may or may not have anything to do with cilantro.</h2>
+				<section class="fix-utility-nav">
+						<%= render 'utility-nav' %>
+				</section>
+				<div class="heading-overlay"></div>
+			</hgroup>
+		</header>
+		<section class="utility-nav-wrap">
+			<%= render 'utility-nav' %>
+		</section>
+	</div> <!-- main-header-wrap -->
+	<section class="ingredients-area">
+		<%= render 'ingredient-list' %>
+	</section>
+</div>

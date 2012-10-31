@@ -1,0 +1,11 @@
+<nav class="utility-nav">
+	<ul>
+		<% if user_signed_in? %>
+		<li>Hi, <strong><%= current_user.email %></strong>!</li>
+		<li><a href="/users/sign_out">Logout</a></li>
+		<% else %>
+		<li><a href="/users/sign_in">Log In</a></li>
+		<li><a href="/users/sign_up">Sign up!</a></li>
+		<% end %>
+	</ul>			
+</nav>

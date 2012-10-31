@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import '_configuration';
+
 .selected-ingredients {
 
 	li {
@@ -9,14 +11,29 @@
 		text-align: center;
 		margin: 0 10px;
 		border: 1px solid #ccc;  
-		background: #fff;
+		background: $brand-green;
 		padding-bottom: 5px;
 		margin-bottom: 25px;
+		color: #fff;
+		text-shadow: 1px 1px black;
+		border: 1px solid $gray;
 	}
 	img {
-		width: 100px;
+		width: 130px;
 		display: block;
 		margin-bottom: 5px;
 		border-bottom: 1px solid #ccc;
 	}
+}
+
+.suggested-recipes li {
+	font-size: 1.25em; /* 20 /16 */
+}
+
+.suggested-recipes li a:before {
+	content: '';
+	background: url('leaf-icon.png');
+	width: 25px;
+	height: 29px;
+	display: block;
 }
